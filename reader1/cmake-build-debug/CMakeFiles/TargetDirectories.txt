@@ -1,0 +1,3 @@
+C:/Users/htoh7/CLionProjects/reader1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/htoh7/CLionProjects/reader1/cmake-build-debug/CMakeFiles/reader1.dir
+C:/Users/htoh7/CLionProjects/reader1/cmake-build-debug/CMakeFiles/edit_cache.dir
