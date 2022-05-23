@@ -7,4 +7,5 @@ git 설치 이후
 -> cd c:/파일/프로젝트	// 내려받은 프로젝트로 들어가기
 -> 거기에 작업한 파일을 저장
 -> git add 파일	// git에 작업한 파일 저장
--> git commit -m
+-> git commit -m "coment"
+-> git bash	// 마지막 저장 작업
