@@ -8,4 +8,4 @@ git 설치 이후
 -> 거기에 작업한 파일을 저장
 -> git add 파일	// git에 작업한 파일 저장
 -> git commit -m "coment"
--> git bash	// 마지막 저장 작업
+-> git push	// 마지막 저장 작업
