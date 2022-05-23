@@ -23,11 +23,11 @@ void test(void)
 	printf("x: %8x, y: %x\n", x, y);
 	for (int i=0; i<16; i++)
 	{
-		if ((i>4 && i<8) || (i>9 && i<12))		// ÇÊ¿ä¾ø´Â ¹øÈ£ ¹«½Ã
+		if ((i>4 && i<8) || (i>9 && i<12))		// í•„ìš”ì—†ëŠ” ë²ˆí˜¸ ë¬´ì‹œ
 		{
 			continue;
 		}
-		z = -1;			// addSubtract ¿¬»ê ÀÌ¿Ü¿¡´Â z = -1
+		z = -1;			// addSubtract ì—°ì‚° ì´ì™¸ì—ëŠ” z = -1
 		s = ALU(x, y, i, &z);
 		printf("c: %2d, s: %8x, z: %8x\n", i, s, z);
 	}
@@ -53,11 +53,11 @@ int addSubtract (int X, int Y, int S)
 		exit(1);
 	}
 
-	if (S == 0)			// S1S0ÀÌ 0ÀÌ¸é add
+	if (S == 0)			// S1S0ì´ 0ì´ë©´ add
 	{
 		ret = X + Y;
 	}
-	else		// S1S0ÀÌ 1ÀÌ¸é subtract
+	else		// S1S0ì´ 1ì´ë©´ subtract
 	{
 		ret = X - Y;
 	}
@@ -111,7 +111,7 @@ int shiftOperation (int X, int Y, int S)
 	else if (S == 2)		// Shift Right Logical
 	{
 		int sign = (X >> 31) & 1;
-		if(sign == 1)		// MSB(ÃÖ»óÀ§ ºñÆ®) °ªÀÌ 1ÀÌ¸é Shift Right ÇØÁØ¸¸Å­ 0·Î Ã¤¿öÁØ´Ù.
+		if(sign == 1)		// MSB(ìµœìƒìœ„ ë¹„íŠ¸) ê°’ì´ 1ì´ë©´ Shift Right í•´ì¤€ë§Œí¼ 0ë¡œ ì±„ì›Œì¤€ë‹¤.
 		{
 			int a = 0;
 			for (int i=31; i>=(32-Y); i--)
@@ -126,7 +126,7 @@ int shiftOperation (int X, int Y, int S)
 	else					// Shift Right Arithmetic
 	{
 		int sign = (X >> 31) & 1;
-		if (sign == 1)		// MSB(ÃÖ»óÀ§ ºñÆ®) °ªÀÌ 1ÀÌ¸é Shift Right ÇØÁØ¸¸Å­ 1·Î Ã¤¿öÁØ´Ù.
+		if (sign == 1)		// MSB(ìµœìƒìœ„ ë¹„íŠ¸) ê°’ì´ 1ì´ë©´ Shift Right í•´ì¤€ë§Œí¼ 1ë¡œ ì±„ì›Œì¤€ë‹¤.
 		{
 			int a = 0;
 			for (int i=31; i>=(32-Y); i--)
@@ -166,11 +166,11 @@ int checkZero (int Oa)
 
 
 int ALU(int X, int Y, int S, int *Z) {
-	int s32, s10;	// S3S2, S1S0ÀÇ °ª ¼±¾ğ
+	int s32, s10;	// S3S2, S1S0ì˜ ê°’ ì„ ì–¸
 	int ret;
 
-	s32 = (S>>2) & 0x3;		// S¿¡¼­ S3S2 °ª ÃßÃâ
-	s10 = S & 0x3;		// S¿¡¼­ S1S0 °ª ÃßÃâ
+	s32 = (S>>2) & 0x3;		// Sì—ì„œ S3S2 ê°’ ì¶”ì¶œ
+	s10 = S & 0x3;		// Sì—ì„œ S1S0 ê°’ ì¶”ì¶œ
 
 	if (s32 == 0)		// Shift
 	{
@@ -185,7 +185,7 @@ int ALU(int X, int Y, int S, int *Z) {
 	else if (s32 == 2)		// addSubtract
 	{
 		ret = addSubtract(X, Y, s10);
-		*Z = checkZero(ret);		// ZÀÇ ÁÖ¼Ò°ª¿¡ ÀúÀå(global º¯¼öÃ³·³ »ç¿ëÇÏ±â À§ÇØ¼­)
+		*Z = checkZero(ret);		// Zì˜ ì£¼ì†Œê°’ì— ì €ì¥(global ë³€ìˆ˜ì²˜ëŸ¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œ)
 
 	}
 	else if (s32 == 3)		// logic
