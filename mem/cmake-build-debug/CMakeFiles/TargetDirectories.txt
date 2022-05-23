@@ -1,0 +1,3 @@
+C:/Users/htoh7/CLionProjects/mem/cmake-build-debug/CMakeFiles/mem.dir
+C:/Users/htoh7/CLionProjects/mem/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/htoh7/CLionProjects/mem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
