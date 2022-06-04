@@ -35,10 +35,10 @@ int MEM(unsigned int a, int v, int nrw, int ss){
             *(pM + offset + 1) = v &0xff;
         }
     }else if(ss==2){
-        if(nrw==0){
+        if(nrw==0){ // read
             v = (*(pM + offset) << 24) + (*(pM + offset + 1) << 16)+(*(pM+offset+2) << 8) + (*(pM +offset+3));
             return v;
-        }else if(nrw==1){
+        }else if(nrw==1){   // write
             *(pM + offset) = v >> 24;
             *(pM + offset + 1) = (v >> 16) & 0xFF;
             *(pM + offset + 2) = (v >> 8) & 0xFF;

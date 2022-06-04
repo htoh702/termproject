@@ -11,7 +11,7 @@ int endian(unsigned int value , int s){
 }
 
 
-unsigned int n_instruction(FILE * file){
+unsigned int n_instruction(FILE * file){    // 명령어 개수
     unsigned int num;
     fseek(file, 0, SEEK_SET);
     fread(&num, sizeof(int), 1, file);
@@ -20,7 +20,7 @@ unsigned int n_instruction(FILE * file){
     return num;
 }
 
-unsigned int n_data(FILE* file){
+unsigned int n_data(FILE* file){        // 데이터 개수
     unsigned num;
     fseek(file, 4, SEEK_SET);
     fread(&num, sizeof(int), 1, file);

@@ -36,7 +36,7 @@ void setPc(unsigned int val){
     pc = val;
 }
 
-void allocate_register(){
+void allocate_register(){   // 초기값 설정
     reg = (int*)calloc(32,sizeof(int));
     Reg(29, Sp, 1);
 }
