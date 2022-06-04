@@ -9,12 +9,9 @@ int step(){
 
     int op, rt, rs, rd, sh, fn, offset, jta;
     convertIR(convertBinary(ir), &op, &rs, &rt, &rd, &sh, &fn, &offset, &jta);
-    //split 32bits
-//	printf(
-//			"op = %d rs =%d rt = %d rd = %d sh = %d fn = %d, offset = %d, jta = %d \n",
-//			op, rs, rt, rd, sh, fn, offset, jta);
-    printf("현재 PC : %x\n", pc);
-//	printf("IR : %x\n", IR);
+
+    printf("PC : %x\n", pc);
+
     if (op == 0) {
         //R-format
         if (fn == 32) { // add

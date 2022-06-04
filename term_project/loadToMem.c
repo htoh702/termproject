@@ -28,31 +28,3 @@ unsigned int n_data(FILE* file){
     return num;
 }
 
-
-
-int decoding(char *cmd) {
-    if (strcmp(cmd, "l")) {
-        return 1;
-    } else if (strcmp(cmd, "j")) {
-        return 2;
-    } else if (strcmp(cmd, "g")) {
-        return 3;
-    } else if (strcmp(cmd, "s")) {
-        return 4;
-    } else if (strcmp(cmd, "m")) {
-        return 5;
-    } else if (strcmp(cmd, "r")) {
-        return 6;
-    } else if (strcmp(cmd, "x")) {
-        return 7;
-    } else if (strcmp(cmd, "sr")) {
-        return 8;
-    } else if (strcmp(cmd, "sm")) {
-        return 9;
-    } else if (strcmp(cmd, "b")) {
-        return 10;
-    }
-    return 0;
-}
-
-

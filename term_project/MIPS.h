@@ -11,7 +11,6 @@
 #endif
 
 // loadToMem.c
-int decoding(char *cmd);
 int endian(unsigned int value , int s);
 unsigned int n_instruction(FILE * file);
 unsigned int n_data(FILE* file);
