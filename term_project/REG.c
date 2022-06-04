@@ -19,24 +19,21 @@ unsigned int Reg(unsigned int a, unsigned int v, int nrw){
         int temp_a = Reg(a, 0,0);
         *(reg+a) = v;
         if(temp_a!=Reg(a,0,0)){
-            printf("register change r%d = %#x\n");
+            printf("register change R%d = %#x\n", a, Reg(a, 0, 0));
         }
     }
     return 0;
 }
 
+
 void getRegister(){
     for(int i=0;i<R_SIZE; i++){
-        printf("r%d\t = %#x\n", i, Reg(i, 0, 0));
+        printf("R%d\t = %#x\n", i, Reg(i, 0, 0));
     }
 }
 
 void setPc(unsigned int val){
     pc = val;
-}
-
-int getPc(){
-    return pc;
 }
 
 void allocate_register(){

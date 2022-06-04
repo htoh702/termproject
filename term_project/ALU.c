@@ -3,6 +3,7 @@
 int addSubtract (int X, int Y, int S)
 {
     int ret;
+
     if (S < 0 || S > 1)
     {
         printf("error in addSubtract\n");
@@ -48,52 +49,24 @@ int logicOperation (int X, int Y, int S)
 
 }
 
-int shiftOperation (int X, int Y, int S)
+int shiftOperation(int V, int Y, int C)
 {
     int ret;
-    if (S < 0 || S > 3)
+
+    if (C < 0 || C > 3)
     {
-        printf("error in shift\n");
+        printf("error in shift operation\n");
         exit(1);
     }
-    if (S == 0)		// no shift
-    {
-        ret = X;
-    }
-    else if (S == 1)		// Shift Left Logical
-    {
-        ret = X << Y;
-    }
-    else if (S == 2)		// Shift Right Logical
-    {
-        int sign = (X >> 31) & 1;
-        if(sign == 1)		// MSB(최상위 비트) 값이 1이면 Shift Right 해준만큼 0로 채워준다.
-        {
-            int a = 0;
-            for (int i=31; i>=(32-Y); i--)
-            {
-                a |= (1 << i);
-            }
-            ret = (X >> Y) ^ a;
-        }
-        else
-            ret = X >> Y;
-    }
-    else					// Shift Right Arithmetic
-    {
-        int sign = (X >> 31) & 1;
-        if (sign == 1)		// MSB(최상위 비트) 값이 1이면 Shift Right 해준만큼 1로 채워준다.
-        {
-            int a = 0;
-            for (int i=31; i>=(32-Y); i--)
-            {
-                a |= (1 << i);
-            }
-            ret = (X >> Y) | a;
-        }
-        else
-            ret = X >> Y;
-    }
+
+    if (C == 0) //No shift
+        ret = V;
+    else if (C == 1) //Shift left logical
+        ret = V << Y;
+    else if (C == 2) //Shift right logical
+        ret = (unsigned int)V >> Y;
+    else  //Shift right arithmetic
+        ret = V >> Y;
 
     return ret;
 }
@@ -152,3 +125,107 @@ int ALU(int X, int Y, int S) {
     return ret;
 
 }
+
+//
+//int addSubtract( int x, int y, int s){
+//int ret;
+//if(s<0||s>1){
+//printf("error in addSubtract\n");
+//exit(1);
+//}
+//if(s==0){
+//ret = x+y;
+//}else{
+//ret = x-y;
+//}
+//return ret;
+//}
+//
+//int logicOperation(int x, int y, int s1s0){
+//    if(s1s0 <0 || s1s0 >3){
+//        printf("error in logic\n");
+//        exit(1);
+//    }
+//    if(s1s0 == 0){
+//        return x&y;
+//    }else if(s1s0 == 1){
+//        return x|y;
+//    }else if(s1s0 == 2){
+//        return x^y;
+//    }else{
+//        return ~(x|y);
+//    }
+//}
+//
+//int shiftOperation(int v, int y, int s1s0){
+//    int ret;
+//    if(s1s0 < 0|| s1s0 > 3){
+//        printf("error in shift\n");
+//        exit(1);
+//    }
+//    if(s1s0 == 0){
+//        ret = v;
+//    }else if(s1s0 ==1){
+//        ret = v << y;
+//    }else if(s1s0 == 2){
+//        ret = v >> y;
+//        int a = 0;
+//        for(int i=0;i<y;i++){
+//            a |= 1<<i;
+//            ret = (v >> y) & ~(a << (32-y));
+//        }
+//    }else{
+//        int sign = y & (1 << 31);
+//        if(sign == 1 << 31){
+//            int a = 0;
+//            for(int i=0;i<y;i++){
+//                a |= 1<<i;
+//            }
+//            ret = (v >> y ) | (a << (32-y));
+//        }
+//        else{
+//            ret = v >> y;
+//        }
+//    }
+//    return ret;
+//}
+//
+//int checkSetLess(int x, int y){
+//    int ret;
+//    if(x>y){
+//        ret = 0;
+//    }else{
+//        ret = 1;
+//    }
+//    return ret;
+//}
+//
+//int checkZero(int oa){
+//    int ret;
+//    if(oa == 0){
+//        ret = 1;
+//    }else{
+//        ret = 0;
+//    }
+//    return ret;
+//}
+//
+//int ALU(int x, int y, int s) {
+//    int s32, s10;
+//    int ret;
+//
+//    s32 = (s >> 2) & 0x3;
+//    s10 = s & 0x3;
+//    if (s32 == 0) {
+//        ret = shiftOperation(x, y, s10);
+//    } else if (s32 == 1) {
+//        ret = checkSetLess(x, y);
+//    } else if (s32 == 2) {
+//        s10 = s10 & 0x1;
+//        ret = addSubtract(x, y, s10);
+//    } else if (s32 == 3){
+//        ret = logicOperation(x, y, s10);
+//    }
+//    return ret;
+//}
+//

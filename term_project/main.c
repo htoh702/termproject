@@ -13,12 +13,15 @@ int main(int argc, char* argv[]) {
     char sum1[100];
     char sum2[100];
     int check = 0;
-    printf("command List\nl : Load program\nj : jump program\ng : Go program\ns : step\nm : View memory\nr : View register\nb : Set break point\nx : program exit\nsr : set register\nsm : set memory\n");
+
+    allocate_register();
+
+    printf("command List\nl : Load program\nj : jump program\ng : Go program\ns : step\nm : View memory\nr : View register\nb : Set break point\nx : program exit\nsr : set register\nsm : set memory\nlist : show list\n");
     while(1){
         printf("command : ");
         fflush(stdout);
         scanf("%s", cmd);
-        printf("%d\n", check);
+
         if((check==0)&&(strcmp(cmd, "l") != 0)){
             if(strcmp(cmd, "x") == 0){
                 printf("Program exit\n");
@@ -35,7 +38,7 @@ int main(int argc, char* argv[]) {
             if(file == NULL){
                 printf("\ncan't open FILE\n");
                 check = 0;
-                break;
+                continue;
             }
             check++;
             setPc(0x00400000);
@@ -49,7 +52,7 @@ int main(int argc, char* argv[]) {
 
             for(int i=0;i<i_size*4;i++){
                 fread(&data, 1, 1, file);
-                MEM(0x00400000+i, data, 1, 0);
+                MEM(0x00400000 + i, data, 1, 0);
             }
             for(int i=0;i<d_size*4;i++){
                 fread(&data, 1, 1,file);
@@ -84,7 +87,7 @@ int main(int argc, char* argv[]) {
             }else if(result == 100){
                 printf("break point\n");
             }
-            break;
+
         }else if(strcmp(cmd, "m")==0){
             scanf("start address : %s", sum1);
             scanf("end address : %s", sum2);
@@ -102,6 +105,7 @@ int main(int argc, char* argv[]) {
             getRegister();
 
         }else if(strcmp(cmd, "b")==0){
+            printf("set break point :");
             scanf("%s", sum1);
             if(strcmp(sum1, "off")){
                 printf("break point cancel");
@@ -137,8 +141,10 @@ int main(int argc, char* argv[]) {
             }else{
                 printf("failed\n");
             }
+        }else if(strcmp(cmd, "list")==0) {
+            printf("command List\nl : Load program\nj : jump program\ng : Go program\ns : step\nm : View memory\nr : View register\nb : Set break point\nx : program exit\nsr : set register\nsm : set memory\nlist : show list\n");
         }else{
-            printf("error(no command)\n");
+                printf("error(no command)\n");
         }
     }
     free(reg);

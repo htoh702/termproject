@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define True 1
-#define False 0
 
 #endif
 
@@ -21,7 +19,6 @@ unsigned int n_data(FILE* file);
 unsigned int Reg(unsigned int a, unsigned int v, int nrw);
 void getRegister();
 void setPc(unsigned int val);
-int getPc();
 void allocate_register();
 
 // MEM.c
@@ -33,7 +30,7 @@ int setMemory(unsigned int addr, int val);
 char *convertBinary(int IR);
 int convertDecimal(char * binString);
 char *splitIR(char *input, int start, int len);
-void convertIR(char * bin, int *op, int * rs, int *rt, int* rd, int *sh, int *fn, int *operand, int *jta);
+void convertIR(char * bin, int *op, int * rs, int *rt, int* rd, int *sh, int *fn, int *offset, int *jta);
 
 // ALU.c
 int addSubtract (int X, int Y, int S);

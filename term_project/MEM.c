@@ -11,7 +11,7 @@ int MEM(unsigned int a, int v, int nrw, int ss){
         pM= p_Mem;
     }else if(sel == 0x100){
         pM=d_Mem;
-    }else if(sel == 0x7ff){
+    }else if(sel == 0x7ff || sel == 0x7fe){
         pM=s_Mem;
     }else{
         printf("Empty memory\n");

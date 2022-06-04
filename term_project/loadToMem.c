@@ -1,14 +1,15 @@
 #include "MIPS.h"
 
 int endian(unsigned int value , int s){
-    if(s == 2){
+    if(s == 2){ // word 단위로 변환
         value = (value>>24) | ((value << 8) & 0x00ff0000) | ((value >> 8) & 0x0000ff00) | (value << 24);
-    }else if(s == 1){
+    }else if(s == 1){   // Half word 단위로 변환
         value = (value>>8) | (value<<8);
     }
 
     return value;
 }
+
 
 unsigned int n_instruction(FILE * file){
     unsigned int num;
