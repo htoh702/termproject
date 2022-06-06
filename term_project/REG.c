@@ -5,7 +5,7 @@
 extern char *s_Mem;
 int *reg;
 int pc = 0x00400000;
-unsigned int Sp = 0x7ff00000;
+unsigned int Sp = 0x80000000;
 
 unsigned int Reg(unsigned int a, unsigned int v, int nrw){
     if(a>31||a<0){
