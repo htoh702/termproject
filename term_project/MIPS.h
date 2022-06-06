@@ -8,6 +8,7 @@
 
 #endif
 
+
 // loadToMem.c
 int endian(unsigned int value , int s);
 unsigned int n_instruction(FILE * file);

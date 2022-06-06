@@ -6,7 +6,7 @@ int main(int argc, char* argv[]) {
     FILE *file = NULL;
 
 
-    int temp, target, result, start, end, location, value;
+    int temp, target, result, start, end, location, value, n_register;
     unsigned char data;
     char address[200];
     char cmd[10];
@@ -73,6 +73,7 @@ int main(int argc, char* argv[]) {
                 result = step();
                 if(result == 100){
                     printf("breakpoint\n");
+                    break;
                 }
             }
             if(result == 500){
@@ -89,8 +90,10 @@ int main(int argc, char* argv[]) {
             }
 
         }else if(strcmp(cmd, "m")==0){
-            scanf("start address : %s", sum1);
-            scanf("end address : %s", sum2);
+            printf("start address : ");
+            scanf("%s", sum1);
+            printf("end address : ");
+            scanf("%s", sum2);
 
             start = (unsigned)strtoul(sum1, NULL, 16);
             end = (unsigned)strtoul(sum2, NULL, 16);
@@ -107,8 +110,8 @@ int main(int argc, char* argv[]) {
         }else if(strcmp(cmd, "b")==0){
             printf("set break point :");
             scanf("%s", sum1);
-            if(strcmp(sum1, "off")){
-                printf("break point cancel");
+            if(strcmp(sum1, "cancel")==0){
+                printf("break point cancel\n");
                 setBreakPoint(0);
             }else{
                 temp = (unsigned)strtoul(sum1, NULL, 16);
@@ -119,19 +122,25 @@ int main(int argc, char* argv[]) {
             printf("exit program\n");
             return 0;
         }else if(strcmp(cmd, "sr")==0){
+            printf("register number : ");
             scanf("%s", sum1);
+            printf("value : ");
             scanf("%s", sum2);
-            location = (unsigned)strtoul(sum1, NULL, 16);
-            value = atoi(sum2);
+            n_register = atoi(sum1);
+            value = (unsigned int)strtoul(sum2, NULL, 16);
 
-            if(setMemory(location, value)==0){
-                printf("memory %0x is set to be %d", location, value);
-            }else {
-                printf("failed\n");
+            if(!value){
+                printf("wrong value\n");
+            }else if(n_register > 31 || n_register < 0){
+                printf("wrong value\n");
+            }else{
+                Reg(n_register, value, 1);
             }
 
         }else if(strcmp(cmd, "sm")==0){
+            printf("memory's location : ");
             scanf("%s", sum1);
+            printf("value : ");
             scanf("%s", sum2);
             location = (unsigned)strtoul(sum1, NULL, 16);
             value = atoi(sum2);

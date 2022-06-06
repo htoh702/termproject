@@ -22,12 +22,12 @@ int MEM(unsigned int a, int v, int nrw, int ss){
         if(nrw==0){     // read
             int v = *(pM + offset);
             return v;
-        }else if(nrw==1){
+        }else if(nrw==1){       // write
             *(pM + offset) = v;
             return 0;
         }
     }else if(ss==1){
-        if(nrw==0){
+        if(nrw==0){     // read
             v = (*(pM + offset) << 8) + *(pM+offset+1);
             return v;
         }else if(nrw==1){   // write
@@ -66,8 +66,7 @@ int setMemory(unsigned int addr, int val) {
     int result_Mem = MEM(addr, val, 1, 2);
 
     if (result_Mem == 1) {
-        return 0;
-    }else{
         return 1;
     }
+    return 0;
 }
