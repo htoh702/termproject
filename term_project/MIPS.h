@@ -8,6 +8,8 @@
 
 #endif
 
+#define syscall 638
+#define b_point 194
 
 // loadToMem.c
 int endian(unsigned int value , int s);

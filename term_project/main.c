@@ -68,24 +68,24 @@ int main(int argc, char* argv[]) {
 
         }else if(strcmp(cmd, "g")==0){
             result =0;
-            while(result != 500){
+            while(result != syscall){
                 printf("\n");
                 result = step();
-                if(result == 100){
+                if(result == b_point){
                     printf("breakpoint\n");
                     break;
                 }
             }
-            if(result == 500){
+            if(result == syscall){
                 printf("\nprogram exit by systemcall\n");
                 setPc(0x00400000);
             }
         }else if(strcmp(cmd, "s")==0){
             result = step();
-            if(result == 500){
+            if(result == syscall){
                 printf("\nprogram exit by systemcall\n");
                 setPc(0x00400000);
-            }else if(result == 100){
+            }else if(result == b_point){
                 printf("break point\n");
             }
 
