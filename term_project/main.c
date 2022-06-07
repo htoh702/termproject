@@ -78,13 +78,11 @@ int main(int argc, char* argv[]) {
             }
             if(result == syscall){
                 printf("\nprogram exit by systemcall\n");
-                setPc(0x00400000);
             }
         }else if(strcmp(cmd, "s")==0){
             result = step();
             if(result == syscall){
                 printf("\nprogram exit by systemcall\n");
-                setPc(0x00400000);
             }else if(result == b_point){
                 printf("break point\n");
             }

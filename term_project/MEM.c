@@ -57,7 +57,7 @@ int getMemory(unsigned int s_addr, unsigned int e_addr) {
         if(result_Mem ==1)
             return 1;
         else
-            printf("Memory %#x = %d\n", i , result_Mem);
+            printf("Memory %#x = %#x\n", i , result_Mem);
     }
     return 0;
 }

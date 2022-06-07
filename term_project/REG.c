@@ -16,9 +16,12 @@ unsigned int Reg(unsigned int a, unsigned int v, int nrw){
         v = *(reg+a);
         return v;
     }else if(nrw == 1){     // write
-        int temp_a = Reg(a, 0,0);
-        *(reg+a) = v;
-        if(temp_a!=Reg(a,0,0)){
+
+        if(a == 29){
+            *(reg+a) = *(reg+a) - v;
+            printf("register change R%d = %#x\n", a, Reg(a, 0, 0));
+        }else{
+            *(reg+a) = v;
             printf("register change R%d = %#x\n", a, Reg(a, 0, 0));
         }
     }
@@ -38,5 +41,5 @@ void setPc(unsigned int val){
 
 void allocate_register(){   // 초기값 설정
     reg = (int*)calloc(32,sizeof(int));
-    Reg(29, Sp, 1);
+    *(reg+29) = Sp;
 }
